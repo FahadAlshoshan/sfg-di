@@ -1,13 +1,12 @@
 package guru.springframework.sfgdi.services;
 
-import guru.springframework.sfgdi.controllers.PropertyInjectedController;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PropertyInjectedGreetingService implements GreetingService {
-    @Override
-    public String sayGreeting() {
-        return "Hello World - Property";
-    }
+  @Override
+  public String sayGreeting() {
+    return "Hello World - Property";
+  }
 }
+
