@@ -3,9 +3,12 @@ package guru.springframework.sfgdi.controllers;
 import guru.springframework.sfgdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
+<<<<<<< HEAD
 /**
  * Created by jt on 12/26/19.
  */
+=======
+>>>>>>> master
 @Controller
 public class MyController {
 
@@ -15,7 +18,13 @@ public class MyController {
         this.greetingService = greetingService;
     }
 
+<<<<<<< HEAD
     public String sayHello(){
         return greetingService.sayGreeting();
+=======
+    public String sayHello() {
+        return  greetingService.sayGreeting() ;
+
+>>>>>>> master
     }
 }

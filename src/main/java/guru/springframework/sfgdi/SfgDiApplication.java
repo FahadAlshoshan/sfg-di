@@ -1,5 +1,6 @@
 package guru.springframework.sfgdi;
 
+<<<<<<< HEAD
 import guru.springframework.sfgdi.config.SfgConfiguration;
 import guru.springframework.sfgdi.config.SfgConstructorConfig;
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
@@ -11,6 +12,13 @@ import guru.springframework.sfgdi.controllers.SetterInjectedController;
 import guru.springframework.sfgdi.datasource.FakeDataSource;
 import guru.springframework.sfgdi.services.PrototypeBean;
 import guru.springframework.sfgdi.services.SingletonBean;
+=======
+import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
+import guru.springframework.sfgdi.controllers.I18nController;
+import guru.springframework.sfgdi.controllers.MyController;
+import guru.springframework.sfgdi.controllers.PropertyInjectedController;
+import guru.springframework.sfgdi.controllers.SetterInjectedController;
+>>>>>>> master
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -21,6 +29,7 @@ public class SfgDiApplication {
   public static void main(String[] args) {
     ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
+<<<<<<< HEAD
     PetController petController = ctx.getBean(PetController.class);
     System.out.println("--- The Best Pet is ---");
     System.out.println(petController.whichPetIsTheBest());
@@ -77,5 +86,25 @@ public class SfgDiApplication {
     System.out.println(sfgConstructorConfig.getJdbcurl());
     System.out.println(sfgConstructorConfig.getPassword());
     System.out.println(sfgConstructorConfig.getUsername());
+=======
+    I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+    System.out.println(i18nController.sayHello());
+
+    System.out.println("----- MyController -----");
+    System.out.println(((MyController) ctx.getBean("myController")).sayHello());
+
+    System.out.println("----- Property -----");
+    System.out.println(
+        ((PropertyInjectedController) ctx.getBean("propertyInjectedController")).getGreeting());
+
+    System.out.println("----- Setter -----");
+    System.out.println(
+        ((SetterInjectedController) ctx.getBean("setterInjectedController")).getGreeting());
+
+    System.out.println("----- Constructor -----");
+    System.out.println(
+        ((ConstructorInjectedController) ctx.getBean("constructorInjectedController"))
+            .getGreeting());
+>>>>>>> master
   }
 }
