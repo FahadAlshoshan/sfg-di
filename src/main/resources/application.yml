@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active:
+      - Cat
+      - EN
+      - dev
+guru:
+  username: username
+  password: password
+  jdbcurl: url
+---
+spring:
+  profiles:
+    prod
+guru:
+  username: produsername
+  password: prodpassword
+  jdbcurl: produrl

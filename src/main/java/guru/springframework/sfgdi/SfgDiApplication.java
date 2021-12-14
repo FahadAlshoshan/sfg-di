@@ -1,11 +1,14 @@
 package guru.springframework.sfgdi;
 
+import guru.springframework.sfgdi.config.SfgConfiguration;
+import guru.springframework.sfgdi.config.SfgConstructorConfig;
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
 import guru.springframework.sfgdi.controllers.I18nController;
 import guru.springframework.sfgdi.controllers.MyController;
 import guru.springframework.sfgdi.controllers.PetController;
 import guru.springframework.sfgdi.controllers.PropertyInjectedController;
 import guru.springframework.sfgdi.controllers.SetterInjectedController;
+import guru.springframework.sfgdi.datasource.FakeDataSource;
 import guru.springframework.sfgdi.services.PrototypeBean;
 import guru.springframework.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -18,9 +21,10 @@ public class SfgDiApplication {
   public static void main(String[] args) {
     ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
-    PetController petController = ctx.getBean("petController", PetController.class);
+    PetController petController = ctx.getBean(PetController.class);
     System.out.println("--- The Best Pet is ---");
     System.out.println(petController.whichPetIsTheBest());
+    System.out.println(petController.getClass());
 
     I18nController i18nController = (I18nController) ctx.getBean("i18nController");
     System.out.println(i18nController.sayHello());
@@ -55,5 +59,23 @@ public class SfgDiApplication {
     System.out.println(prototypeBean1.getMyScope());
     PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
     System.out.println(prototypeBean2.getMyScope());
+
+    System.out.println("---------------- Fake Datasource");
+    FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+    System.out.println(fakeDataSource.getJdbcurl());
+    System.out.println(fakeDataSource.getPassword());
+    System.out.println(fakeDataSource.getUsername());
+
+    System.out.println("---------------- Config Props Bean");
+    SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
+    System.out.println(sfgConfiguration.getJdbcurl());
+    System.out.println(sfgConfiguration.getPassword());
+    System.out.println(sfgConfiguration.getUsername());
+
+    System.out.println("-------------- Constructor Binding");
+    SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+    System.out.println(sfgConstructorConfig.getJdbcurl());
+    System.out.println(sfgConstructorConfig.getPassword());
+    System.out.println(sfgConstructorConfig.getUsername());
   }
 }

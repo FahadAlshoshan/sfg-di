@@ -16,6 +16,7 @@ public class PetController {
     }
 
     public String whichPetIsTheBest(){
+    System.out.println(petService.getClass());
         return petService.getPetType();
     }
 }
